@@ -9,19 +9,33 @@
 #import "ViewController.h"
 
 @interface ViewController ()
-
+@property (nonatomic,strong)UIWebView *web;
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    [self.view addSubview:self.web];
+    [self.web setFrame:self.view.frame];
+    [self.web loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http:www.baidu.com"]]];
+    NSString *aa = [self.web stringByEvaluatingJavaScriptFromString:@"navigator.userAgent"];
+    NSLog(@"-----------%@",aa);
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
+- (UIWebView *)web {
+	if(_web == nil) {
+		_web = [[UIWebView alloc] init];
+//        NSString *originUA = [_web stringByEvaluatingJavaScriptFromString:@"navigator.userAgent"];
+//        NSString *newUA = [NSString stringWithFormat:@"%@ %@",originUA,@"your userAgent"];
+//        NSDictionary *dictionary = @{@"UserAgent":newUA};
+//        [[NSUserDefaults standardUserDefaults] registerDefaults:dictionary];
+//        
+//        NSString *title= [_web stringByEvaluatingJavaScriptFromString:@"document.title"];
+//        NSLog(@"%@",title);
+	}
+	return _web;
 }
 
 @end
