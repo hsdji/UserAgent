@@ -23,9 +23,7 @@
         NSString *customUserAgent =  @"Recharge";
         [[NSUserDefaults standardUserDefaults] registerDefaults:@{@"UserAgent":customUserAgent}];
     }
-    
-    
-    
+
 //    这是一个新的分支
     
     return YES;
